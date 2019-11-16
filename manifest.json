@@ -8,13 +8,6 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "content_scripts": [
-    {
-      "matches": ["http://*.nytimes.com/*"],
-      "all_frames": true,
-      "js": ["contentScript.js"]
-    }
-  ],
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
