@@ -28,11 +28,35 @@ chrome.storage.sync.get(function (data) {
     // console.log(data);
     let html = "";
     data.students.forEach(element => {
-        html += `<div class="alert alert-info" role="alert">` + element + 
-        ``
-        `</div>`;
+        var img_src = "/images/students/" + element + ".JPG";
+        console.log(ImageExist(img_src));
+        if(ImageExist(img_src)){
+            html += 
+            `<div class="card pm-3" style="width: 18rem">`+
+                `<img src="`+ img_src +`" alt="" class="card-img-top" style="max-width:100%;">`+
+                `<div class="card-body">` +
+                `<h5 class="card-title">` + element +`</h5>`+
+                `</div>`+
+            `</div>`;
+        }else{
+            html += 
+            `<div class="card" style="width: 18rem">`+
+                `<img src="/images/students/none.jpg" alt="" class="card-img-top mb-3" style="max-width:100%;">`+
+                `<div class="card-body">` +
+                `<h5 class="card-title">` + element +`</h5>`+
+                `</div>`+
+            `</div>`;
+        }
+        
         
         console.log(element);
     });
     studentDiv.innerHTML = html ;
 });
+
+function ImageExist(url) 
+{
+   var img = new Image();
+   img.src = url;
+   return img.height != 0;
+}
